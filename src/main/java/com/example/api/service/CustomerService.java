@@ -26,5 +26,13 @@ public class CustomerService {
 	public Optional<Customer> findById(Long id) {
 		return repository.findById(id);
 	}
+	
+	public Customer save(Customer customer) {
+		return repository.save(customer);
+	}
+	
+	public void deleteById(Long id) {
+		repository.deleteById(id); 
+	}
 
 }
