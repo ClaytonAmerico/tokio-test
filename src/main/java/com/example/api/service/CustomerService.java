@@ -3,6 +3,7 @@ package com.example.api.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +35,13 @@ public class CustomerService {
 	public void deleteById(Long id) {
 		repository.deleteById(id); 
 	}
+	
+	public Customer updateCustomer(Long code, Customer customer) {
+		Optional<Customer> customerSave = findById(code);
+		BeanUtils.copyProperties(customer, customerSave, "code");
+		return repository.save(customerSave.get());
+	}
+	
+	
 
 }

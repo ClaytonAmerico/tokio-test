@@ -1,17 +1,32 @@
 package com.example.api.domain;
 
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
-@Embeddable
+@Entity
 public class Address {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long code;
 
 	private String street;
 	private String number;
 	private String complement;
 	private String district;
 	private String zipCode;
-	private String cidadecity;
+	private String city;
 	private String state;
+	
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "id_customer")
+	private Customer customer;
 
 	public String getStreet() {
 		return street;
@@ -53,12 +68,12 @@ public class Address {
 		this.zipCode = zipCode;
 	}
 
-	public String getCidadecity() {
-		return cidadecity;
+	public String getCity() {
+		return city;
 	}
 
-	public void setCidadecity(String cidadecity) {
-		this.cidadecity = cidadecity;
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getState() {
