@@ -1,7 +1,6 @@
 package com.example.api.domain;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,9 +24,6 @@ public class Customer {
 	@Email
 	private String email;
 
-	@Embedded
-	private Address address;
-
 	public Long getId() {
 		return id;
 	}
@@ -50,14 +46,6 @@ public class Customer {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
 	}
 
 	@Override
