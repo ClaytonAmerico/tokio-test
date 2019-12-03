@@ -36,7 +36,7 @@ public class AddressService {
 		repository.deleteById(id);
 	}
 
-	public Address updateCustomer(Long code, Address address) {
+	public Address updateAddress(Long code, Address address) {
 		Optional<Address> addressSave = findById(code);
 		BeanUtils.copyProperties(address, addressSave, "code");
 		return repository.save(addressSave.get());
